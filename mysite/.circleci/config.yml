@@ -1,6 +1,10 @@
-version: 2
+version: 2.1
+orbs:
+    python: circleci/python@0.2.1
+
 jobs:
-  build:
+  build-and-test:
+    executor: python/default
     docker:
       # specify the version you desire here
       - image: circleci/python:latest
@@ -10,6 +14,9 @@ jobs:
 
     steps:
       - checkout
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
 
       # Download and cache dependencies
       - restore_cache:

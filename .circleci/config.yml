@@ -34,7 +34,7 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            python manage.py test tests.TestPollsApi
+            python manage.py test TestPollsApi
 
       - store_artifacts:
           path: test-reports
